@@ -1,0 +1,2 @@
+# CUTA
+This is an official implementation for Customized Transformer Adapter with Frequency Masking for Deepfake Detection
