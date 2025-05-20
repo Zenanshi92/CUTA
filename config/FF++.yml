@@ -1,0 +1,43 @@
+#### datasets
+datasets:
+  n_workers: 8
+  image_size: 224
+  root: 'path/to/datasets'
+  train:
+    split: ./splits/train.json
+    method: [ 'Face2Face', 'FaceSwap', 'NeuralTextures', 'Deepfakes' ]
+    downsample: 4
+    balance: True
+    batch_size: 32
+
+  val:
+    split: ./splits/val.json
+    method: [ 'Face2Face', 'FaceSwap', 'NeuralTextures', 'Deepfakes' ]
+    balance: False
+
+  test:
+    split: ./splits/test.json
+    method: [ 'Face2Face', 'FaceSwap', 'NeuralTextures', 'Deepfakes' ]
+    balance: False
+    batch_size: 48
+
+train:
+  optimizer: Adam
+  lr: !!float 1e-5
+  epoch: 100
+  weight_decay: !!float 1e-5
+  start_epoch: 0
+
+  manual_seed: 2025
+
+  resume: ~
+  ckt_path: ./checkpoints/pretrained/
+
+  save_path: ./checkpoints/
+
+test:
+  ckt_path: ./checkpoints/
+  manual_seed: 2025
+
+model:
+  baseline: CUTA
